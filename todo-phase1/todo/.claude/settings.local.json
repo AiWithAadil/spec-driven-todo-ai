@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(.specifyscriptspowershellcreate-new-feature.ps1 -Description \"Create a clear, testable specification for a Python CLI Todo application with exactly five features: add task, delete task, update task, view tasks, and mark task complete. Include user actions, inputs, outputs, and acceptance criteria. Do not design architecture.\" -Number 1 -ShortName \"cli-todo-app\" -Json)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(python -m pytest:*)",
+      "Bash(python:*)"
+    ]
+  }
+}

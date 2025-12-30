@@ -1,0 +1,6 @@
+# Runtime dependencies: NONE
+# Python standard library only - uses argparse, json, pathlib, datetime
+
+# Testing dependencies
+pytest>=7.0.0
+pytest-cov>=4.0.0
