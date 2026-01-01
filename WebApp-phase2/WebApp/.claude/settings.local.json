@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git fetch:*)",
+      "Bash(mkdir:*)",
+      "Skill(sp.implement)",
+      "Bash(if [ -f \".specify/scripts/powershell/check-prerequisites.ps1\" ])",
+      "Bash(then pwsh -Command \". ''./.specify/scripts/powershell/check-prerequisites.ps1'' -Json -RequireTasks -IncludeTasks\")",
+      "Bash(else echo \"Prerequisites check script not found, proceeding with manual detection\")",
+      "Bash(fi)",
+      "Bash(python -c:*)",
+      "Bash(ls -la \"C:\\\\Users\\\\HP\\\\Documents\\\\Hackathon2\\\\WebApp-phase2\\\\WebApp\\\\frontend\"\" | grep -E \".env \")"
+    ]
+  }
+}
