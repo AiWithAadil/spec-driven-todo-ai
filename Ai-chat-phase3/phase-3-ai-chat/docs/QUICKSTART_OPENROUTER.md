@@ -4,14 +4,14 @@
 
 ### 1. Your API Key is Ready ✓
 ```
-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
+sk-or-v1-your-api-key-here
 ```
 
 ### 2. Update `.env` file
 The `.env` file already has your key configured. Verify it contains:
 ```bash
 LLM_PROVIDER=openrouter
-OPENROUTER_API_KEY=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
+OPENROUTER_API_KEY=sk-or-v1-your-api-key-here
 OPENROUTER_MODEL=openai/gpt-4-turbo
 OPENROUTER_BASE_URL=https://openrouter.ai/api/v1
 ```

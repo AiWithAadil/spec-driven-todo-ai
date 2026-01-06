@@ -6,7 +6,7 @@ Your OpenRouter API key has been fully integrated into the AI Todo Chatbot proje
 
 ### Your API Key
 ```
-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
+sk-or-v1-your-api-key-here
 ```
 
 ### Status
@@ -22,7 +22,7 @@ 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
 ### 1. `.env` (Local Configuration - Not Committed)
 ```bash
 LLM_PROVIDER=openrouter
-OPENROUTER_API_KEY=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
+OPENROUTER_API_KEY=sk-or-v1-your-api-key-here
 OPENROUTER_MODEL=openai/gpt-4-turbo
 OPENROUTER_BASE_URL=https://openrouter.ai/api/v1
 DATABASE_URL=sqlite:///./test.db
@@ -139,7 +139,7 @@ Then restart the application.
 ```bash
 # Check if .env is loaded
 grep "OPENROUTER_API_KEY" .env
-# Should show: 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
+# Should show: sk-or-v1-your-api-key-here
 ```
 
 ### 2. Run Tests
