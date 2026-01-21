@@ -1,0 +1,133 @@
+# Backend API Contract for Todo Chatbot
+
+# This contract defines the expected API endpoints of the backend service
+# These are the interfaces that the frontend will interact with
+
+openapi: 3.0.0
+info:
+  title: Todo Chatbot Backend API
+  version: 1.0.0
+  description: API for the AI-powered Todo Chatbot backend service
+servers:
+  - url: http://todo-chatbot-backend:8000
+    description: Backend service in Kubernetes cluster
+
+paths:
+  /chat/messages:
+    post:
+      summary: Send a message to the chatbot
+      description: Creates a new conversation or continues an existing one
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                conversation_id:
+                  type: string
+                  description: UUID of existing conversation or null for new
+                message:
+                  type: string
+                  description: User's message to the chatbot
+              required:
+                - message
+      responses:
+        '200':
+          description: Successful response from the chatbot
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatResponse'
+
+  /health:
+    get:
+      summary: Health check endpoint
+      description: Returns health status of the backend service
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum: [healthy]
+                  timestamp:
+                    type: string
+                    format: date-time
+
+  /ready:
+    get:
+      summary: Readiness check endpoint
+      description: Returns readiness status of the backend service
+      responses:
+        '200':
+          description: Service is ready to accept requests
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum: [ready]
+                  timestamp:
+                    type: string
+                    format: date-time
+
+components:
+  schemas:
+    ChatResponse:
+      type: object
+      properties:
+        conversation_id:
+          type: string
+          description: UUID of the conversation
+        message_id:
+          type: string
+          description: UUID of the response message
+        response:
+          type: string
+          description: Chatbot's response to the user
+        todos:
+          type: array
+          items:
+            $ref: '#/components/schemas/Todo'
+        tool_invocations:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              parameters:
+                type: object
+              result:
+                type: object
+        metadata:
+          type: object
+          properties:
+            timestamp:
+              type: string
+              format: date-time
+            message_count:
+              type: integer
+
+    Todo:
+      type: object
+      properties:
+        id:
+          type: string
+          description: UUID of the todo
+        title:
+          type: string
+          description: Title of the todo
+        status:
+          type: string
+          enum: [open, completed]
+        priority:
+          type: string
+          enum: [low, medium, high]

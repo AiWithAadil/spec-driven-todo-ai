@@ -1,0 +1,14 @@
+# Use nginx as a base image
+FROM nginx:alpine
+
+# Copy custom nginx configuration if it exists
+COPY docker/nginx.conf /etc/nginx/nginx.conf
+
+# Copy frontend files to nginx html directory
+COPY frontend/ /usr/share/nginx/html/
+
+# Expose port 80
+EXPOSE 80
+
+# Start nginx
+CMD ["nginx", "-g", "daemon off;"]
